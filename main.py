@@ -1,11 +1,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.security import HTTPBearer
 from database import engine
 import models
 from routers import auth, jobs, applications
 
 # Create all tables
 models.Base.metadata.create_all(bind=engine)
+
+security = HTTPBearer()
 
 app = FastAPI(
     title="Job Board API",
