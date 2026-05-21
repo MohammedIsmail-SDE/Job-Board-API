@@ -24,7 +24,7 @@ def apply_to_job(job_id: int, data: schemas.ApplicationCreate, db: Session = Dep
     application = models.Application(cover_letter=data.cover_letter, candidate_id=current_user.id, job_id=job_id)
     db.add(application)
     db.commit()
-    db.refresh(application)
+  
     return application
 
 
