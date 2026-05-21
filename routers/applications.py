@@ -55,6 +55,6 @@ def update_status(application_id: int, data: schemas.ApplicationStatusUpdate, db
     if application.job.employer_id != current_user.id:
         raise HTTPException(status_code=403, detail="Not authorized")
     application.status = data.status
-    db.commit()
+
     db.refresh(application)
     return application
